@@ -3,20 +3,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 input_currency = input('Enter a name: ')
-tab = pd.read_csv(input_currency+".csv", usecols=['Otwarcie', 'Data'], delimiter=';', header=0)
+tab = pd.read_csv(input_currency + ".csv", usecols=['Otwarcie', 'Data'], delimiter=';', header=0)
+
 
 # TODO: csv for all currency, import functions to Flask
 def select_rows(tab):
+    global selected_rows
     for index, row in tab.iterrows():
         selected_rows = (row['Otwarcie'], row['Data'])
     return selected_rows
 
 
-def draw_plot(tab,name):
+def draw_plot(tab, name):
     x = []
     y = []
 
-    plt.figure(figsize=(16,15))
+    plt.figure(figsize=(16, 15))
 
     for index, line in tab.iterrows():
         x.append(line[0])
@@ -33,4 +35,4 @@ def draw_plot(tab,name):
 
 
 print(select_rows(tab))
-print(draw_plot(tab,input_currency))
+print(draw_plot(tab, input_currency))
