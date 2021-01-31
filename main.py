@@ -1,16 +1,36 @@
-# This is a sample Python script.
+# -*- coding: utf-8 -*-
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+input_currency = input('Enter a name: ')
+tab = pd.read_csv(input_currency+".csv", usecols=['Otwarcie', 'Data'], delimiter=';', header=0)
+
+# TODO: csv for all currency, import functions to Flask
+def select_rows(tab):
+    for index, row in tab.iterrows():
+        selected_rows = (row['Otwarcie'], row['Data'])
+    return selected_rows
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def draw_plot(tab,name):
+    x = []
+    y = []
+
+    plt.figure(figsize=(16,15))
+
+    for index, line in tab.iterrows():
+        x.append(line[0])
+        y.append(line[1])
+
+    plt.plot(x[0::20], y[0::20], label=name + ' chart')
+    plt.xlabel('Data')
+    plt.ylabel('Cena')
+
+    plt.title('Cena ' + name)
+    plt.legend()
+    plt.savefig(name + '.png')
+    plt.show()
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(select_rows(tab))
+print(draw_plot(tab,input_currency))
