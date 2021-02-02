@@ -11,7 +11,7 @@ def start_page():
     return render_template('start.html')
 
 
-@app.route('/register', mrthods=['GET', 'POST'])
+@app.route('/register')
 def registration():
     form = RegistrationForm()
     return render_template('register.html', title='Register', form=form)
