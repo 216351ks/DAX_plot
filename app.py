@@ -11,17 +11,40 @@ def start_page():
     return render_template('start.html')
 
 
-@app.route('/register')
+@app.route('/register', mrthods=['GET', 'POST'])
 def registration():
-    registration_form = RegistrationForm()
-    return render_template('register.html', title='Register', form=registration_form)
+    form = RegistrationForm()
+    return render_template('register.html', title='Register', form=form)
 
 
 @app.route('/login')
 def login():
-    login_form = LoginForm()
-    return render_template('login.html', title='Login', form=login_form)
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
 
+@app.route('/contact')
+def contact_page():
+    return render_template('contact.html', title='Contact')
+
+@app.route('/DAX')
+def dax_chart():
+    return render_template('dax.html', title='DAX')
+
+@app.route('/NDX')
+def ndx_chart():
+    return render_template('ndx.html', title='NDX')
+
+@app.route('/SPX')
+def spx_chart():
+    return render_template('spx.html', title='SPX')
+
+@app.route('/USDAUD')
+def us_chart():
+    return render_template('usdaud.html', title='USD/AUD')
+
+@app.route('/WIG20')
+def wig_chart():
+    return render_template('wig.html', title='WIG20')
 
 if __name__ == "__main__":
     app.run(debug=True)

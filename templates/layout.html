@@ -16,32 +16,35 @@
 
     <nav class="navbar navbar-dark bg-dark">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">Currency Prices</a>
+            <a class="navbar-brand" href="{{ url_for('start_page') }}">Currency Prices</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link active" aria-current="page" href="{{ url_for('start_page') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Login area</a> #TODO: login area page
+                  <a class="nav-link" href="{{ url_for('login') }}">Login area</a> #TODO: login area page
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('registration') }}">Register Now!</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Charts
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">DAX</a></li>
-                    <li><a class="dropdown-item" href="#">NDX</a></li>
-                    <li><a class="dropdown-item" href="#">SPX</a></li>
-                    <li><a class="dropdown-item" href="#">USD/AUD</a></li>
-                    <li><a class="dropdown-item" href="#">WIG20</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('dax_chart') }}">DAX</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('ndx_chart') }}">NDX</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('spx_chart') }}">SPX</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('us_chart') }}">USD/AUD</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('wig_chart') }}">WIG20</a></li>
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Contact us</a>
+                  <a class="nav-link" href="{{ url_for('contact_page') }}">Contact us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Coming soon</a>
@@ -55,5 +58,6 @@
           </div>
     </nav>
     {% block content%} {% endblock %}
+    <div class="contact-box>">{% block line %} {% endblock %}</div>
 </body>
 </html>
